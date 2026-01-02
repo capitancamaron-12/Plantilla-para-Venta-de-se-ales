@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+    <script>
+      (function () {
+        try {
+          var root = document.documentElement;
+          var stored = null;
+          try {
+            stored = window.localStorage ? localStorage.getItem("theme") : null;
+          } catch (e) {
+            stored = null;
+          }
+
+          root.classList.remove("light", "dark");
+
+          if (stored === "light" || stored === "dark") {
+            root.classList.add(stored);
+            return;
+          }
+
+          var prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+          root.classList.add(prefersDark ? "dark" : "light");
+        } catch (e) {
+          document.documentElement.classList.remove("light", "dark");
+        }
+      })();
+    </script>
+
+    <title>TCorp Business - Señales de Trading</title>
+    <meta property="og:title" content="TCorp Business - Señales de Trading" />
+    <meta property="og:description" content="Plataforma de señales de trading y datos de mercado para profesionales y equipos." />
+    <meta name="twitter:title" content="TCorp Business - Señales de Trading" />
+    <meta name="twitter:description" content="Plataforma de señales de trading y datos de mercado para profesionales y equipos." />
+    <meta name="twitter:image" content="/favicon.png" />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
