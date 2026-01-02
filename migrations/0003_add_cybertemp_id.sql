@@ -1,0 +1,1 @@
+ALTER TABLE "emails" ADD COLUMN "cybertemp_id" text;
